@@ -24,8 +24,8 @@ desktop_actions="new-empty-window;"
 desktop_other_actions="
 [Desktop Action new-empty-window]
 Name=New Empty Window
-Exec=code --new-window %F
-Icon=com.visualstudio.code
+Exec=$executable_path --new-window %F
+Icon=$icon_path
 "
 
 echo "Welcome to $display_name tarball installer, just chill and wait for the installation to complete!"
