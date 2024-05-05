@@ -44,8 +44,8 @@ The script will install the application in the following destinations if you hav
 - SteamOS(Steam Deck) by Spookyorange
 - Void Linux with GlibC by Dreampop602
 - Ubuntu by Dreampop602
-- Gentoo stable by oblivikun
-- Debian by Andrezeira1 
+- Gentoo stable by oblivikun 
+- Debian by Andrezeira1 and PenguinByte 
 
 ## Contributing
 
