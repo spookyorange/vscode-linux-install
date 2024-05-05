@@ -43,6 +43,7 @@ The script will install the application in the following destinations if you hav
 - Fedora Atomic(Silverblue) by Spookyorange
 - SteamOS(Steam Deck) by Spookyorange
 - Void Linux with GlibC by Dreampop602
+- Ubuntu by Dreampop602 
 
 ## Contributing
 
