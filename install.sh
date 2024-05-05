@@ -55,7 +55,7 @@ curl -L -o $tar_location $official_package_location
 if [ $? -eq 0 ]; then
     echo OK
 else
-    echo "Installation failed. Curl not found or not installed"
+    echo "Installation failed. Curl not accesible or not installed!"
     exit
 fi
 
