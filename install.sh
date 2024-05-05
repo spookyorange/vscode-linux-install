@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 app_name="code"
 display_name="Visual Studio Code"
@@ -6,14 +6,13 @@ literal_name_of_installation_directory=".tarball-installations"
 universal_path_for_installation_directory="$HOME/$literal_name_of_installation_directory"
 app_installation_directory="$universal_path_for_installation_directory/$app_name"
 official_package_location="https://code.visualstudio.com/sha/download?build=stable&os=linux-x64"
-tar_location="./hello.tar.gz"
 local_bin_path="$HOME/.local/bin"
 local_application_path="$HOME/.local/share/applications"
 app_bin_in_local_bin="$local_bin_path/$app_name"
 desktop_in_local_applications="$local_application_path/$app_name.desktop"
 icon_path=$app_installation_directory/resources/app/resources/linux/code.png
 executable_path=$app_installation_directory/code
-
+tar_location=$(mktemp /tmp/vscode.XXXXXX.tar.gz)
 desktop_keywords=web,development,code,api,text,editor
 desktop_terminal=false
 desktop_type=Application
@@ -52,6 +51,12 @@ sleep 1
 
 echo "Installing the latest package"
 curl -L -o $tar_location $official_package_location
+if [ $? -eq 0 ]; then
+    echo OK
+else
+    echo "Installation failed. Curl not found or not installed"
+    exit
+fi
 
 mkdir $app_name
 
