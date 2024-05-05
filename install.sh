@@ -52,6 +52,12 @@ sleep 1
 
 echo "Installing the latest package"
 curl -L -o $tar_location $official_package_location
+if [ $? -eq 0 ]; then
+    echo OK
+else
+    echo "Installation failed. Curl not found or not installed"
+    exit
+fi
 
 mkdir $app_name
 
