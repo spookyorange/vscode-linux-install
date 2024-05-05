@@ -4,6 +4,11 @@ A script to easily install Visual Studio Code the tarball way on your Linux mach
 
 Note: This installation script is by no means affiliated with Visual Studio Code project, or its maintainers.
 
+## Prerequisites
+
+* [git](https://git-scm.com/)
+* [curl](https://github.com/curl/curl)
+
 ## Usage
 
 Clone the repo and run the script
