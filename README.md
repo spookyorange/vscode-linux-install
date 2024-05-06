@@ -50,7 +50,8 @@ The script will install the application in the following destinations if you hav
 - Void Linux with GlibC by Dreampop602
 - Ubuntu by Dreampop602
 - Gentoo stable by oblivikun 
-- Debian by Andrezeira1 and PenguinByte 
+- Debian by Andrezeira1 and PenguinByte
+- Arch by Dreampop602
 
 ## Contributing
 
