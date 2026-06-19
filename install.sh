@@ -26,6 +26,43 @@ Name=New Empty Window
 Exec=$executable_path --new-window %F
 Icon=$icon_path
 "
+path_update_instruction=""
+
+ensure_local_bin_in_path() {
+  case ":$PATH:" in
+    *":$local_bin_path:"*)
+      return
+      ;;
+  esac
+
+  shell_name=$(basename "$SHELL")
+
+  case "$shell_name" in
+    bash)
+      shell_rc_file="$HOME/.bashrc"
+      ;;
+    zsh)
+      shell_rc_file="$HOME/.zshrc"
+      ;;
+    *)
+      path_update_instruction="Add $local_bin_path to your PATH in your shell config and restart your shell."
+      return
+      ;;
+  esac
+
+  path_export_line='export PATH="$HOME/.local/bin:$PATH"'
+
+  if [ ! -f "$shell_rc_file" ]; then
+    touch "$shell_rc_file"
+  fi
+
+  if grep -Fqx "$path_export_line" "$shell_rc_file"; then
+    return
+  fi
+
+  echo "$path_export_line" >> "$shell_rc_file"
+  path_update_instruction="Run 'source $shell_rc_file' or restart your shell to use $local_bin_path in PATH."
+}
 
 echo "Welcome to $display_name tarball installer, just chill and wait for the installation to complete!"
 
@@ -84,6 +121,8 @@ ln -s $executable_path $app_bin_in_local_bin
 
 echo "Created executable for your \$PATH if you ever need"
 
+ensure_local_bin_in_path
+
 if [ ! -d $local_application_path ]; then
   echo "Creating the $local_application_path directory for desktop file"
   mkdir $local_application_path
@@ -110,6 +149,10 @@ echo "Created desktop entry successfully"
 sleep 1
 
 echo "Installation is successful"
+
+if [ -n "$path_update_instruction" ]; then
+  echo "$path_update_instruction"
+fi
 
 sleep 1
 
